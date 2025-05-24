@@ -13,8 +13,8 @@ def train(model, train_data, val_data, optimizer, batch_size=16, num_epoches=10,
     np.random.seed(seed)
 
     train_labels, train_images = train_data
-    train_labels = train_labels[:100]
-    train_images = train_images[:100]
+    #train_labels = train_labels[:100]
+    #train_images = train_images[:100]
     val_labels, val_images = val_data
 
     #为训练数据和验证数据分别设置批处理迭代器
@@ -178,7 +178,7 @@ def plot_training_history(history, model_path='./model'):
 
     plt.tight_layout()
     # 保存图像
-    plt.savefig(os.path.join(model_path, 'training_history.png'))
+    plt.savefig(os.path.join(model_path, 'training_history1.png'))
     plt.close()
 
 
@@ -193,7 +193,7 @@ def main():
     input_size = (32, 32, 3)
     hidden_size = 128
     output_class = 10
-    dropout_rate = 0.3
+    dropout_rate = 0.0
     model = NeuralNetwork(input_size, hidden_size, output_class, dropout_rate)
     #创建优化器
     optimizer = SGD()

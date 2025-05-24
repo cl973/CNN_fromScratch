@@ -29,7 +29,7 @@ class NeuralNetwork:
         self.layers = {}
 
         #卷积+池化层1
-        self.layers['conv1'] = ConvLayer(in_channels=c, kernel_size=(3, 3), num_kernels=8)
+        self.layers['conv1'] = ConvLayer(in_channels=c, kernel_size=(3, 3), num_kernels=16)
         self.layers['relu1'] = ReLU()
         self.layers['pool1'] = MaxPoolingLayer(pool_size=(2, 2))
         #卷积层1的输出形状
@@ -37,10 +37,10 @@ class NeuralNetwork:
         w_conv1 = (w - self.layers['conv1'].kernel_width) // self.layers['conv1'].stride + 1
         h_pool1 = (h_conv1 - self.layers['pool1'].pool_h) // self.layers['pool1'].stride[0] + 1
         w_pool1 = (w_conv1 - self.layers['pool1'].pool_w) // self.layers['pool1'].stride[1] + 1
-        c_pool1 = 8
+        c_pool1 = 16
 
         #卷积+池化层2
-        self.layers['conv2'] = ConvLayer(in_channels=c_pool1, kernel_size=(3, 3), num_kernels=16)
+        self.layers['conv2'] = ConvLayer(in_channels=c_pool1, kernel_size=(3, 3), num_kernels=32)
         self.layers['relu2'] = ReLU()
         self.layers['pool2'] = MaxPoolingLayer(pool_size=(2, 2))
         # 卷积层2的输出形状
@@ -48,7 +48,7 @@ class NeuralNetwork:
         w_conv2 = (w_pool1 - self.layers['conv2'].kernel_width) // self.layers['conv2'].stride + 1
         h_pool2 = (h_conv2 - self.layers['pool2'].pool_h) // self.layers['pool2'].stride[0] + 1
         w_pool2 = (w_conv2 - self.layers['pool2'].pool_w) // self.layers['pool2'].stride[1] + 1
-        c_pool2 = 16
+        c_pool2 = 32
 
         #展平层
         self.layers['flatten'] = FlattenLayer()
