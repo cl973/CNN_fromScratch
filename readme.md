@@ -4,7 +4,7 @@
 
 本项目从零构建了深度学习的所有核心组件，包括张量运算、层结构（卷积、池化、全连接）、激活函数、反向传播算法、优化器以及数据加载管线。项目针对 **CIFAR-10** 数据集进行了训练和测试。
 
-## 核心特性
+## ✨ 核心特性
 
 *   **纯手动实现**：所有的前向传播和反向传播梯度推导均由手动实现，深入理解计算图逻辑。
 *   **Numba 加速**：利用 `@numba.njit` 对计算密集型的卷积层（`im2col` 风格循环）进行了 JIT 编译加速，显著提升了纯 Python 实现的训练效率。
@@ -12,7 +12,7 @@
 *   **完整训练管线**：包含数据预处理、BatchIterator、Exponential Scheduler及训练过程可视化。
 *   **自定义上下文管理**：实现了类似 PyTorch 的 `no_grad` 上下文管理器，用于推理阶段禁用梯度计算。
 
-## 项目结构
+## 📂 项目结构
 
 ```text
 project_root/
@@ -34,7 +34,7 @@ project_root/
 └── README.md
 ```
 
-## 环境依赖
+## 🛠️ 环境依赖
 
 虽然不使用 DL 框架，但需要以下基础库进行数值计算和绘图：
 
@@ -49,7 +49,7 @@ project_root/
 pip install numpy pandas numba matplotlib
 ```
 
-## 快速开始
+## 🚀 快速开始
 
 ### 1. 准备数据
 请下载 **CIFAR-10 binary version** 数据集，并解压至 `data/cifar10/` 目录。
@@ -74,7 +74,7 @@ python train.py
 python test.py
 ```
 
-## 网络架构
+## 🧠 网络架构
 
 本项目实现了一个经典的 CNN 结构，包含两个卷积块和一个全连接分类头：
 
@@ -96,7 +96,7 @@ python test.py
     *   Fully Connected (Output Class: 10)
     *   Softmax
 
-## 技术细节实现
+## 🔧 技术细节实现
 
 ### 1. 卷积层加速 (Numba)
 纯 Python 的多重循环卷积运算速度极慢。本项目在 `layer.py` 中使用了 Numba 的 JIT 编译技术：
@@ -120,7 +120,7 @@ def _conv_forward_numba(...):
 *   **SGD**：实现了标准的随机梯度下降。
 *   **Exponential Scheduler**：实现了Step-based的指数学习率衰减，随着训练进行逐步降低学习率，帮助模型收敛到更优的极小值。
 
-## 结果示例
+## 📊 结果示例
 
 训练过程中的 Loss 和 Accuracy 变化将保存为图像：
 ![Training History](model/training_history1.png)
